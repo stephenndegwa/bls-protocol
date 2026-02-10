@@ -1,0 +1,202 @@
+# BLS Template: Decision Policy
+
+bls_version: "1.0.1"
+
+specification:
+  # ============================================
+  # IDENTITY
+  # ============================================
+  id: "my-decision-policy"           # REQUIRED: Unique ID (lowercase, kebab-case)
+  version: "1.0.0"                   # REQUIRED: Semantic version
+  name: "My Decision Policy"         # REQUIRED: Human-readable name
+  description: "Describe what this policy does"  # REQUIRED
+  
+  # ============================================
+  # CLASSIFICATION
+  # ============================================
+  domain: "my-domain"                # e.g., communication, finance, healthcare
+  logic_type: "decision_policy"      # REQUIRED: Must be "decision_policy"
+  status: "draft"                    # draft | active | deprecated
+  
+  # ============================================
+  # OWNERSHIP
+  # ============================================
+  owner: "team-name"
+  maintainer: "person-name"
+  reviewers:
+    - "reviewer1"
+    - "reviewer2"
+  
+  # ============================================
+  # TRACEABILITY
+  # ============================================
+  source_pud: "path/to/pud.yaml"    # Optional: Link to PUD document
+  requirements:                      # Optional: Requirement IDs
+    - "REQ-001"
+    - "REQ-002"
+  
+  # ============================================
+  # INPUTS
+  # ============================================
+  inputs:
+    - name: "input_field_1"
+      type: "string"                 # string | number | boolean | array | object | date | datetime | enum
+      description: "What this input represents"
+      required: true
+      validation:
+        # Optional validation rules
+        # pattern: "^regex$"
+        # min: 0
+        # max: 100
+        # enum: ["value1", "value2"]
+      examples:
+        - "example value"
+        
+    # Add more inputs as needed
+  
+  # ============================================
+  # OUTPUTS
+  # ============================================
+  outputs:
+    - name: "output_field_1"
+      type: "string"
+      description: "What this output represents"
+      deterministic: true            # Same inputs → same outputs?
+      
+    # Add more outputs as needed
+  
+  # ============================================
+  # LOGIC
+  # ============================================
+  logic:
+    evaluation_strategy: "first_match"  # first_match | best_match | all_matches
+    
+    rules:
+      # Rule 1
+      - id: "rule-1"
+        name: "Descriptive Rule Name"
+        description: "What this rule does"
+        priority: 1                  # Lower number = higher priority
+        
+        condition:
+          type: "expression"         # expression | always | never
+          expression: "input_field_1 == 'some_value'"
+          
+        action:
+          type: "select_option"      # Action type (your choice)
+          params:
+            result: "option_a"
+            # Add action parameters
+            
+        metadata:
+          reason: "Business justification for this rule"
+          examples:
+            - "Example scenario"
+      
+      # Rule 2
+      - id: "rule-2"
+        name: "Another Rule"
+        priority: 2
+        
+        condition:
+          type: "expression"
+          expression: "input_field_1 == 'other_value'"
+          
+        action:
+          type: "select_option"
+          params:
+            result: "option_b"
+      
+      # Add more rules as needed
+    
+    # Default action (if no rules match)
+    default_action:
+      type: "select_default"
+      params:
+        result: "default_option"
+        
+    # Optional: Conflict resolution strategy
+    conflict_resolution: "priority"  # priority | most_specific | custom
+  
+  # ============================================
+  # CONSTRAINTS
+  # ============================================
+  constraints:
+    - id: "constraint-1"
+      type: "business_rule"          # invariant | precondition | postcondition | business_rule | compliance
+      description: "What must be true"
+      expression: "output_field_1 IS_NOT_NULL"
+      severity: "error"              # error | warning | info
+      
+    # Add more constraints as needed
+  
+  # ============================================
+  # TEST CASES
+  # ============================================
+  test_cases:
+    - id: "test-happy-path-1"
+      name: "Test Rule 1"
+      description: "Tests the primary happy path"
+      category: "happy_path"         # happy_path | edge_case | error_case
+      priority: "critical"           # critical | high | medium | low
+      
+      input:
+        input_field_1: "some_value"
+        
+      expected_output:
+        output_field_1: "option_a"
+    
+    - id: "test-default"
+      name: "Test Default Action"
+      description: "Tests default when no rules match"
+      category: "edge_case"
+      
+      input:
+        input_field_1: "unknown_value"
+        
+      expected_output:
+        output_field_1: "default_option"
+    
+    # Add more test cases (at least one per rule + default)
+  
+  # ============================================
+  # OPTIONAL: OBSERVABILITY
+  # ============================================
+  observability:
+    logging:
+      enabled: true
+      level: "info"                  # debug | info | warn | error
+      log_inputs: true
+      log_outputs: true
+      redact_sensitive: true
+      
+    metrics:
+      enabled: true
+      track_execution_time: true
+      track_success_rate: true
+  
+  # ============================================
+  # OPTIONAL: PERFORMANCE
+  # ============================================
+  performance:
+    response_time:
+      target_p95_ms: 100
+      max_acceptable_ms: 500
+    
+    timeout_ms: 5000
+  
+  # ============================================
+  # OPTIONAL: SECURITY
+  # ============================================
+  security:
+    authentication_required: false
+    validate_all_inputs: true
+    sanitize_outputs: true
+  
+  # ============================================
+  # METADATA
+  # ============================================
+  metadata:
+    created_at: "2025-02-10T00:00:00Z"
+    updated_at: "2025-02-10T00:00:00Z"
+    # Add any custom metadata
