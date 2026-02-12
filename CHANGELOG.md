@@ -17,6 +17,33 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.0.3] - 2025-02-12
+
+### Added (Resolves final production-scale gaps from expert review)
+- **Section 15: Side Effect Formalization**
+  - Side effect taxonomy and explicit side-effect declarations
+  - Idempotency and retry-safety rules + static checks
+  - Compensation modeling and completeness checks
+
+- **Section 16: Formal Action Registry**
+  - Action catalog format defining action contracts (inputs/outputs, determinism, failure modes)
+  - Catalog-based validation for action references, params, outputs, and side-effect consistency
+
+- **Section 17: Partial Evaluation & Simulation Engine**
+  - Simulation specification and output trace format
+  - Interactive playground and batch simulation patterns
+  - CI/CD simulation guidance
+
+- **Section 18: Multi-BLS System Composition**
+  - System graph specification for end-to-end products
+  - System-level constraints, scenarios, and validation rules
+
+- **Section 19: Human Approval Protocol**
+  - Approval schema, cryptographic signature computation, and validation rules
+  - Quality gate enforcement for approved specs
+
+---
+
 ## [1.0.1] - 2025-02-10
 
 ### Added
@@ -184,9 +211,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Links
 
-- [1.0.1]: https://github.com/bls-protocol/bls-protocol/releases/tag/v1.0.1
-- [1.0.0]: https://github.com/bls-protocol/bls-protocol/releases/tag/v1.0.0
-- [Unreleased]: https://github.com/bls-protocol/bls-protocol/compare/v1.0.1...HEAD
+- [1.0.3]: https://github.com/stephenndegwa/bls-protocol/releases/tag/v1.0.3
+- [1.0.2]: https://github.com/stephenndegwa/bls-protocol/releases/tag/v1.0.2
+- [1.0.1]: https://github.com/stephenndegwa/bls-protocol/releases/tag/v1.0.1
+- [1.0.0]: https://github.com/stephenndegwa/bls-protocol/releases/tag/v1.0.0
+- [Unreleased]: https://github.com/stephenndegwa/bls-protocol/compare/v1.0.3...HEAD
 
 ---
 
