@@ -187,3 +187,83 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [1.0.1]: https://github.com/bls-protocol/bls-protocol/releases/tag/v1.0.1
 - [1.0.0]: https://github.com/bls-protocol/bls-protocol/releases/tag/v1.0.0
 - [Unreleased]: https://github.com/bls-protocol/bls-protocol/compare/v1.0.1...HEAD
+
+---
+
+## [1.0.2] - 2025-02-10
+
+### Added (Resolves 10 critical gaps from expert review)
+
+- **Section 5: Execution Semantics** — Formal contracts for all 6 logic types
+  - Decision policy: first_match algorithm with precise evaluation order
+  - Workflow: sequential/parallel with termination guarantees
+  - State machine: event handling with ambiguity rules
+  - Error taxonomy: EvaluationError, ValidationError, TerminationError, etc.
+
+- **Section 6: Determinism Guarantees** — Cross-language behavioral consistency
+  - Canonical evaluation rules for integers, floats, datetime, strings, nulls
+  - Determinism profiles (strict | relaxed | none)
+  - RE2-only regex requirement
+  - IEEE 754 double precision standard
+
+- **Section 7: Logic Completeness Proof Model** — Static analysis algorithms
+  - PRIORITY_UNIQUE: detect duplicate priorities
+  - REACHABILITY_ANALYSIS: detect shadowed rules
+  - OVERLAP_DETECTION: detect rule conflicts
+  - WORKFLOW_TERMINATION: prove workflows terminate
+  - STATE_REACHABILITY: prove all states reachable
+  - TRANSITION_AMBIGUITY: detect ambiguous state transitions
+  - LIVENESS_CHECK: prove all paths reach terminal state
+  - Completeness score: must be 100% to pass quality gate
+
+- **Section 8: Versioned Execution Contract** — Engine compatibility matrix
+  - BLS version ↔ engine version compatibility rules
+  - Backward compatibility guarantees per semantic version level
+  - Enforcement algorithm on BLS load
+
+- **Section 9: Canonical Intermediate Representation (IR)**
+  - Normalized AST format (JSON)
+  - Deterministic IR generation algorithm
+  - SHA-256 checksum for drift detection
+  - AI agents should consume IR, not raw YAML
+
+- **Section 10: Runtime Separation Model** — Four formal layers
+  - Layer 1: Specification (BLS)
+  - Layer 2: Validation
+  - Layer 3: Execution Engine (generated code)
+  - Layer 4: Runtime Infrastructure
+  - Formal boundary rules and constraint enforcement model
+
+- **Section 11: Formal Change Safety Guarantees** — Behavioral diffing
+  - Change type taxonomy: BEHAVIORAL_BREAKING, STRUCTURAL_BREAKING, ADDITIVE, CLARIFICATION
+  - BEHAVIORAL_DIFF algorithm comparing IR versions
+  - Safe change workflow
+
+- **Section 12: Logic Composability Guarantees** — Composition rules
+  - Import types: reference | inline | extends
+  - Merge precedence rules (explicit override required)
+  - C3 linearization for diamond dependencies
+  - Circular dependency detection algorithm
+
+- **Section 13: Formal State Isolation Model**
+  - State model declaration: stateless | stateful_immutable | stateful_mutable
+  - Transaction model with compensation steps (saga pattern)
+  - Event sourcing vs imperative execution semantics
+
+- **Section 14: AI Drift Control Layer**
+  - Conformance Test Suite (CTS): auto-generated from BLS
+  - Conformance validation process
+  - Conformance report format
+  - Mandatory AI implementation constraints
+  - Drift indicators
+
+### Changed
+- Quality gates updated to require conformance validation
+- AI consumption guidelines updated with drift prevention instructions
+- Expression language: RE2 requirement now mandatory (was recommended)
+- Constraint enforce_at now has static analysis implications
+
+### Migration
+- v1.0.2 is backward compatible with v1.0.1
+- New required fields emit warnings, not errors, until added
+- See Appendix A for migration guide
