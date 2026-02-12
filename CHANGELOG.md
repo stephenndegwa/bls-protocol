@@ -17,6 +17,47 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.0.4] - 2025-02-12
+
+### Added — Production Correctness Layer
+
+Expert review scored v1.0.3 at 9.9/10. v1.0.4 closes the remaining sharp edges that bite in real multi-agent production environments.
+
+- **§1.5 RFC 2119 Normative Language**
+  - MUST/SHOULD/MAY/SHALL defined as normative per RFC 2119
+  - Validator enforcement: MUST→error, SHOULD→warning, MAY→info
+  - Retroactively applies to all prior sections
+
+- **§20 Nondeterministic Output Semantics**
+  - Defines conformance behavior when `deterministic: false`
+  - Introduces nondeterministic intent test expectations
+
+- **§21 Action Execution Contract for Mocking**
+  - Stub strategies for simulation and CI reproducibility
+  - Fixture and recorded replay guidance
+
+- **§22 Compensation Realities**
+  - Defines realistic compensation guarantees and failure policies
+
+- **§23 Concurrency & Exactly-Once**
+  - Dedupe/idempotency requirements for exactly-once style systems
+  - Duplicate delivery conformance testing guidance
+
+- **§24 Event Schema Evolution Policy**
+  - Formal rules for additive vs breaking changes
+  - Consumer compatibility declaration guidance
+
+- **§25 Cryptographic Approval Signatures**
+  - Adds stronger signature tiers and canonical signing payload guidance
+
+- **§26 Namespace & Collision Policy**
+  - Namespacing rules and collision resolution order
+
+- **§27 Updated Quality Gates**
+  - Adds validation coverage for the new production-correctness rules
+
+---
+
 ## [1.0.3] - 2025-02-12
 
 ### Added (Resolves final production-scale gaps from expert review)
@@ -211,11 +252,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Links
 
+- [1.0.4]: https://github.com/stephenndegwa/bls-protocol/releases/tag/v1.0.4
 - [1.0.3]: https://github.com/stephenndegwa/bls-protocol/releases/tag/v1.0.3
 - [1.0.2]: https://github.com/stephenndegwa/bls-protocol/releases/tag/v1.0.2
 - [1.0.1]: https://github.com/stephenndegwa/bls-protocol/releases/tag/v1.0.1
 - [1.0.0]: https://github.com/stephenndegwa/bls-protocol/releases/tag/v1.0.0
-- [Unreleased]: https://github.com/stephenndegwa/bls-protocol/compare/v1.0.3...HEAD
+- [Unreleased]: https://github.com/stephenndegwa/bls-protocol/compare/v1.0.4...HEAD
 
 ---
 
